@@ -1,8 +1,8 @@
 Description
 ===========
 
-Installs and configures the [Librato Metrics Collectd
-Plugin](https://github.com/librato/collectd-librato).
+Chef cookbook that installs and configures the [Librato Metrics
+Collectd Plugin](https://github.com/librato/collectd-librato).
 
 Requirements
 ============
