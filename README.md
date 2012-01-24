@@ -13,7 +13,7 @@ Attributes
 ==========
 
  * `node[:collectd_librato][:version]` - Version of Librato Collectd
-   plugin to install. Tag must exist.
+   plugin to install. Tag must exist. (optional, defaults to latest)
  * `node[:collectd_librato][:email]` - Librato Metrics Email
  * `node[:collectd_librato][:api_token]` - Librato Metrics API Token
 
