@@ -9,3 +9,5 @@ depends "git"
 depends "collectd"
 
 recipe "collectd-librato", "Installs Librato's Collectd Plugin"
+recipe "collectd-librato::build", "Just build plugin"
+recipe "collectd-librato::install", "Just install plugin"
