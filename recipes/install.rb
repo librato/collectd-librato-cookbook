@@ -1,5 +1,7 @@
 include_recipe "collectd"
 
+ver = node[:collectd_librato][:version]
+
 # Install plugin
 collectd_python_plugin "collectd-librato" do
   path "/opt/collectd-librato-#{ver}/lib"
