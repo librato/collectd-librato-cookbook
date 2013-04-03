@@ -25,7 +25,7 @@ After setting the above attributes (whether through chef-server or by just inclu
 ```ruby
 # recipe
 include_recipe "collectd"
-include_Recipe "collectd-librato"
+include_recipe "collectd-librato"
 # runlist
 recipe[collectd]
 recipe[collectd-librato]
