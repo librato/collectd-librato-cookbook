@@ -20,3 +20,17 @@ Attributes
 Usage
 =====
 
+After setting the above attributes (whether through chef-server or by just including them in your recipe), include the `collectd` recipe (see Requirements) and `collectd-librato` recipe to your recipe or runlist:
+
+```ruby
+# recipe
+include_recipe "collectd"
+include_recipe "collectd-librato"
+# runlist
+recipe[collectd]
+recipe[collectd-librato]
+```
+
+Verifcation
+===========
+If everything went well, there should be a file at `/etc/collectd/plugins/python.conf` which configures the librato python plugin with your credentials.
