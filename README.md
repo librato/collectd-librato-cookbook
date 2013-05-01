@@ -7,7 +7,7 @@ Collectd Plugin](https://github.com/librato/collectd-librato).
 Requirements
 ============
 
- * [collectd cookbook](https://github.com/librato/collectd-cookbook)
+ * [collectd cookbook](https://github.com/miah/chef-collectd)
 
 Attributes
 ==========
