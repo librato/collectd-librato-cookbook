@@ -7,22 +7,20 @@
 # All rights reserved - Do Not Redistribute
 #
 
-include_recipe "git"
-
 repo = node[:collectd_librato][:repo]
 ver = node[:collectd_librato][:version]
 
-package "libpython2.7"
+package 'libpython2.7'
 
-directory "/opt/src"
+directory '/opt/src'
 
-git "/opt/src/collectd-librato-#{ver}" do
+git '/opt/src/collectd-librato-#{ver}' do
   repository repo
-  reference "v#{ver}"
+  reference 'v#{ver}'
   action :sync
 end
 
-bash "install_collectd_librato" do
+bash 'install_collectd_librato' do
   cwd "/opt/src/collectd-librato-#{ver}"
   code <<EOH
 make install
