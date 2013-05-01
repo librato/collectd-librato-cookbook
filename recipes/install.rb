@@ -3,7 +3,7 @@ ver = node[:collectd_librato][:version]
 
 opts = {
   'APIToken' => node[:collectd_librato][:api_token],
-  'Email' => node[:collectd_librato][:email]
+  'Email' => node[:collectd_librato][:email],
   'paths' => ["/opt/collectd-librato-#{ver}/lib"]
 }
 
