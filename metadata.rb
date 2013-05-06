@@ -7,6 +7,7 @@ long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          '0.0.4'
 
 depends 'collectd'
+depends 'python'
 
 recipe 'collectd-librato', "Installs Librato's Collectd Plugin"
 recipe 'collectd-librato::build', 'Just build plugin'
