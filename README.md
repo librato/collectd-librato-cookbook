@@ -34,3 +34,8 @@ recipe[collectd-librato]
 Verifcation
 ===========
 If everything went well, there should be a file at `/etc/collectd/plugins/python.conf` which configures the librato python plugin with your credentials.
+
+Tests
+=====
+1. Run `bundle install`
+2. Run `strainer test`
