@@ -3,11 +3,7 @@ require 'chefspec'
 describe 'collectd-librato::default' do
   let(:chef_run) do
     Chef::Recipe.any_instance.stub(:include_recipe)
-    runner = ChefSpec::ChefRunner.new do |node|
-      node.set[:collectd_librato][:api_token] = 'api_token'
-      node.set[:collectd_librato][:email] = 'email'
-    end
-    runner.converge 'collectd-librato::default'
+    runner = ChefSpec::ChefRunner.new.converge 'collectd-librato::default'
   end
 
   it 'creates directory' do
@@ -25,6 +21,11 @@ describe 'collectd-librato::default' do
     )
   end
 
+  it 'log errors' do
+    expect(chef_run).to log 'The node[:collectd_librato][:api_token] attribute has not been set.  The collectd_librato plugin will not work correctly.'
+    expect(chef_run).to log 'The node[:collectd_librato][:email] attribute has not been set.  The collectd_librato plugin will not work correctly.'
+  end
+
   describe "create collectd plugin file" do
     let(:chef_run) {
       Chef::Recipe.any_instance.stub(:include_recipe)
@@ -35,23 +36,17 @@ describe 'collectd-librato::default' do
       runner.converge 'collectd-librato::default'
     }
 
+    it 'not log errors' do
+      expect(chef_run).not_to log 'The node[:collectd_librato][:api_token] attribute has not been set.  The collectd_librato plugin will not work correctly.'
+      expect(chef_run).not_to log 'The node[:collectd_librato][:email] attribute has not been set.  The collectd_librato plugin will not work correctly.'
+    end
+
     it 'create collectd-librato.conf file' do
       expect(chef_run).to create_file "#{chef_run.node['collectd']['plugconf_dir']}/collectd-librato.conf"
     end
 
     it 'create collectd-librato.conf file with content' do
       pending "No method to check template resource contents"
-    end
-  end
-
-  describe "check errors" do
-    let(:chef_run) {
-      Chef::Recipe.any_instance.stub(:include_recipe)
-      ChefSpec::ChefRunner.new(:log_level => :info).converge 'collectd-librato::default'
-    }
-    it 'log errors' do
-      expect(chef_run).to log 'The node[:collectd_librato][:api_token] attribute has not been set.  The collectd_librato plugin will not work correctly.'
-      expect(chef_run).to log 'The node[:collectd_librato][:email] attribute has not been set.  The collectd_librato plugin will not work correctly.'
     end
   end
 end
