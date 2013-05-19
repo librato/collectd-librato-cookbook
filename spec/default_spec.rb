@@ -22,23 +22,23 @@ describe 'collectd-librato::default' do
   end
 
   it 'log errors' do
-    expect(chef_run).to log 'The node[:collectd_librato][:api_token] attribute has not been set.  The collectd_librato plugin will not work correctly.'
-    expect(chef_run).to log 'The node[:collectd_librato][:email] attribute has not been set.  The collectd_librato plugin will not work correctly.'
+    expect(chef_run).to log 'The node[:collectd_librato][:APIToken] attribute has not been set.  The collectd_librato plugin will not work correctly.'
+    expect(chef_run).to log 'The node[:collectd_librato][:Email] attribute has not been set.  The collectd_librato plugin will not work correctly.'
   end
 
   describe "create collectd plugin file" do
     let(:chef_run) {
       Chef::Recipe.any_instance.stub(:include_recipe)
       runner = ChefSpec::ChefRunner.new(:step_into => ['collectd_plugin']) do |node|
-        node.set[:collectd_librato][:api_token] = 'api_token'
-        node.set[:collectd_librato][:email] = 'email'
+        node.set[:collectd_librato][:APIToken] = 'APIToken'
+        node.set[:collectd_librato][:Email] = 'Email'
       end
       runner.converge 'collectd-librato::default'
     }
 
     it 'not log errors' do
-      expect(chef_run).not_to log 'The node[:collectd_librato][:api_token] attribute has not been set.  The collectd_librato plugin will not work correctly.'
-      expect(chef_run).not_to log 'The node[:collectd_librato][:email] attribute has not been set.  The collectd_librato plugin will not work correctly.'
+      expect(chef_run).not_to log 'The node[:collectd_librato][:APIToken] attribute has not been set.  The collectd_librato plugin will not work correctly.'
+      expect(chef_run).not_to log 'The node[:collectd_librato][:Email] attribute has not been set.  The collectd_librato plugin will not work correctly.'
     end
 
     it 'create collectd-librato.conf file' do

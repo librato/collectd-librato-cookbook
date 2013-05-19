@@ -28,23 +28,23 @@ end
 
 include_recipe 'collectd::client'
 
-unless node[:collectd_librato][:api_token]
-  log 'collectd_librato_api_token' do
+unless node[:collectd_librato][:APIToken]
+  log 'collectd_librato_APIToken' do
     level :error
-    message 'The node[:collectd_librato][:api_token] attribute has not been set.  The collectd_librato plugin will not work correctly.'
+    message 'The node[:collectd_librato][:APIToken] attribute has not been set.  The collectd_librato plugin will not work correctly.'
   end
 end
 
-unless node[:collectd_librato][:email]
-  log 'collectd_librato_email' do
+unless node[:collectd_librato][:Email]
+  log 'collectd_librato_Email' do
     level :error
-    message 'The node[:collectd_librato][:email] attribute has not been set.  The collectd_librato plugin will not work correctly.'
+    message 'The node[:collectd_librato][:Email] attribute has not been set.  The collectd_librato plugin will not work correctly.'
   end
 end
 
 opts = {
-  'APIToken' => node[:collectd_librato][:api_token],
-  'Email' => node[:collectd_librato][:email],
+  'APIToken' => node[:collectd_librato][:APIToken],
+  'Email' => node[:collectd_librato][:Email],
   :paths => ["/opt/collectd-librato-#{node[:collectd_librato][:version]}/lib"]
 }
 
@@ -57,6 +57,6 @@ collectd_plugin 'collectd-librato' do
   template 'collectd-librato.conf.erb'
   type 'python'
   options(opts)
-  not_if { node[:collectd_librato][:api_token].nil? }
-  not_if { node[:collectd_librato][:email].nil? }
+  not_if { node[:collectd_librato][:APIToken].nil? }
+  not_if { node[:collectd_librato][:Email].nil? }
 end

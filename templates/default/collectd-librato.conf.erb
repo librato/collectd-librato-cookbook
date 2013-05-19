@@ -20,18 +20,8 @@
   <Module "<%= @name %>">
   <% @options.each_pair do |key, value| %>
   <% if key != :paths %>
-    <%= collectd_key(key) %> <%= collectd_option(value) %>
+    <%= key.to_s %> <%= value %>
   <% end %>
   <% end %>
   </Module>
-  
-
-  <% unless @modules.nil? %>
-    <% @modules.each_pair do |mod, config| %>
-    Import "<%= mod %>"
-  <Module "<%= mod %>">
-    <%= collectd_settings(config, 2) %>
-  </Module>
-    <% end %>
-  <% end %>
 </Plugin>
