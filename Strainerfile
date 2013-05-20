@@ -1,0 +1,4 @@
+# Strainerfile
+knife test: bundle exec knife cookbook test --cookbook-path . $COOKBOOK
+foodcritic: bundle exec foodcritic -f any $SANDBOX/$COOKBOOK
+chefspec: bundle exec rspec -b --fail-fast $SANDBOX/$COOKBOOK

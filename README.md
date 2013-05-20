@@ -1,21 +1,19 @@
 Description
 ===========
 
-Chef cookbook that installs and configures the [Librato Metrics
-Collectd Plugin](https://github.com/librato/collectd-librato).
+Chef cookbook that installs and configures the [Librato Metrics Collectd Plugin](https://github.com/librato/collectd-librato).
 
 Requirements
 ============
 
- * [collectd cookbook](https://github.com/librato/collectd-cookbook)
+ * [collectd cookbook](https://github.com/miah/chef-collectd)
 
 Attributes
 ==========
 
- * `node[:collectd_librato][:version]` - Version of Librato Collectd
-   plugin to install. Tag must exist. (optional, defaults to latest)
- * `node[:collectd_librato][:email]` - Librato Metrics Email
- * `node[:collectd_librato][:api_token]` - Librato Metrics API Token
+ * `node[:collectd_librato][:version]` - Version of Librato Collectd plugin to install. Tag must exist. (optional, defaults to 0.0.8)
+ * `node[:collectd_librato][:Email]` - Librato Metrics Email
+ * `node[:collectd_librato][:APIToken]` - Librato Metrics API Token
 
 Usage
 =====
@@ -24,13 +22,16 @@ After setting the above attributes (whether through chef-server or by just inclu
 
 ```ruby
 # recipe
-include_recipe "collectd"
 include_recipe "collectd-librato"
 # runlist
-recipe[collectd]
 recipe[collectd-librato]
 ```
 
 Verifcation
 ===========
-If everything went well, there should be a file at `/etc/collectd/plugins/python.conf` which configures the librato python plugin with your credentials.
+If everything went well, there should be a file at `/etc/collectd/plugins/collectd-librato.conf` which configures the librato python plugin with your credentials.
+
+Tests
+=====
+1. Run `bundle install`
+2. Run `strainer test`
