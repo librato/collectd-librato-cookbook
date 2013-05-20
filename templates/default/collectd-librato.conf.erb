@@ -20,7 +20,7 @@
   <Module "<%= @name %>">
   <% @options.each_pair do |key, value| %>
   <% if key != :paths %>
-    <%= key.to_s %> <%= value %>
+    <%= key.to_s %> "<%= value %>"
   <% end %>
   <% end %>
   </Module>
