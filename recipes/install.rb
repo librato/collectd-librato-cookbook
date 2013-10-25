@@ -13,5 +13,11 @@ collectd_python_plugin "collectd-librato" do
   if node[:collectd_librato][:api]
     opts["Api"] = node[:collectd_librato][:api]
   end
+
+  # Allow user to provide additional configuration via extendend hash
+  if node[:collectd_librato][:extra_config]
+    opts.merge!(node[:collectd_librato][:extra_config])
+  end
+
   options(opts)
 end

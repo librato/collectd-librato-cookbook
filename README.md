@@ -12,10 +12,19 @@ Requirements
 Attributes
 ==========
 
+## Required
+
  * `node[:collectd_librato][:version]` - Version of Librato Collectd
    plugin to install. Tag must exist. (optional, defaults to latest)
  * `node[:collectd_librato][:email]` - Librato Metrics Email
  * `node[:collectd_librato][:api_token]` - Librato Metrics API Token
+
+## Optional
+
+ * `node[:collectd_librato][:extra_config]` - A hash of extra
+   configuration settings to pass to the collectd-librato
+   plugin. Keys/values must match the [options described
+   here](https://github.com/librato/collectd-librato#configuration).
 
 Usage
 =====
