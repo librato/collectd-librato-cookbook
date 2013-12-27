@@ -40,6 +40,6 @@ recipe[collectd]
 recipe[collectd-librato]
 ```
 
-Verifcation
+Verification
 ===========
 If everything went well, there should be a file at `/etc/collectd/plugins/python.conf` which configures the librato python plugin with your credentials.
