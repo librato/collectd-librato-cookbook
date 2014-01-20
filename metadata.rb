@@ -1,3 +1,4 @@
+name             "collectd-librato"
 maintainer       "Librato, Inc."
 maintainer_email "mike@librato.com"
 license          "Apache 2.0"
@@ -7,6 +8,7 @@ version          "0.0.3"
 
 depends "git"
 depends "collectd"
+depends "collectd-librato"
 
 recipe "collectd-librato", "Installs Librato's Collectd Plugin"
 recipe "collectd-librato::build", "Just build plugin"
