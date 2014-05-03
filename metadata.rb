@@ -4,7 +4,7 @@ license          "Apache 2.0"
 name             "collectd-librato"
 description      "Installs/Configures Librato's Collectd Plugin"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          "0.0.4"
+version          "0.0.5"
 
 depends "git"
 depends "collectd"
