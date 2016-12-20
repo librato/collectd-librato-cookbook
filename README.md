@@ -1,3 +1,5 @@
+## DEPRECATED: Please use https://github.com/librato/chef-librato instead.
+
 Description
 ===========
 
